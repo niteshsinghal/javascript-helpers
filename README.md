@@ -1,2 +1,1 @@
-# javascript-helpers
-JavaScript Helper Functions
+# JavaScript Helper Functions

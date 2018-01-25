@@ -43,7 +43,12 @@
             return text.replace(/<.*?>/g, "");
         }
 
-
+        var _lTrim = function(text) {
+            return this.replace(/^\s*/, "");
+        }
+        var _rTrim = function(text) {
+            return this.replace(/\s*$/, "");
+        }
 
         //#region "Register DOM Functins"
 
@@ -62,14 +67,11 @@
                 return _generateSlug(this);
             }
             String.prototype.ltrim = function() {
-                return this.replace(/^\s*/, "");
+                return _lTrim(this);
             }
             String.prototype.rtrim = function() {
-                return this.replace(/\s*$/, "");
+                return _rTrim(this);
             }
-            String.prototype.trim = function() {
-                return this.replace(/^\s*|\s*$/g, "");
-            };
             Array.prototype.inArray = function(value) {
                 var i;
                 for (i = 0; i < this.length; i++) {
@@ -80,7 +82,7 @@
                 }
                 return false;
             };
-            Number.prototype.isNumber = String.prototype.isString = function(value) {
+            Number.prototype.isNumber = String.prototype.isNumber = function(value) {
                 return !isNaN(parseFloat(value)) && isFinite(value);
             }
             String.prototype.isString = function(value) {
@@ -131,6 +133,8 @@
             convertToPascalCase: _convertToPascalCase,
             generateSlug: _generateSlug,
             stripHtmlTags: _stripHtmlTags,
+            lTrim: _lTrim,
+            rTrim: _rTrim,
             version: '1.0',
         };
         return _utilObject;
